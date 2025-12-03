@@ -1,153 +1,68 @@
-# 📊 Sales Dashboard
+# Sales Dashboard ⚡
 
-A modern, responsive **Sales Dashboard** built with **React**, **Tailwind CSS**, and **Recharts**.  
-It displays sales analytics with filters, charts, KPIs, and a paginated transactions table.  
-The dashboard fetches sales data from a backend API and allows users to filter by date, price, email, phone number, and more.
+A modern, responsive **Sales Analytics Dashboard** built with **React**, **Tailwind CSS**, and **Recharts**. Features real-time filtering, interactive charts, KPIs, and a fully paginated & sortable transactions table.
 
----
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 🚀 Features
-
-### 🔍 Filtering & Search
-- Filter by **Start Date**, **End Date**
-- Filter by **Minimum Price**
-- Filter by **Customer Email**
-- Filter by **Phone Number**
-- Apply Filters button
-- Refresh button
-
-### 📈 Analytics Overview
-- Total Sales  
-- Total Revenue  
-- Average Order Value  
-- Conversion Rate  
-- Growth percentage indicators
-
-### 📊 Sales Over Time Chart
-- Line chart showing:
-  - Total Sales
-  - Revenue
-- Built using **Recharts**
-
-### 📑 Sales Transactions Table
-- Fully responsive table
-- Sorting options
-- Pagination
-- Status indicators:
-  - Completed
-  - Pending
-  - Cancelled
-
-### 🎨 UI & UX
-- Modern dark UI  
-- Tailwind CSS  
-- Clean, minimal, responsive layout  
+🌐 **Live Demo**: [https://sales-dashboard-afrin1.vercel.app](https://sales-dashboard-afrin1.vercel.app/)
 
 ---
 
-## 🛠 Tech Stack
+## 📋 Features
 
-| Category | Technologies |
-|----------|--------------|
-| Frontend | React, Vite, JavaScript |
-| Styling | Tailwind CSS |
-| Charts | Recharts |
-| State | React Hooks |
-| Icons | Lucide / Heroicons |
-| Build Tool | Vite |
+### ✅ Core Features
+- **Date Range Filter** (Start & End Date pickers with instant reload)
+- **Advanced Filters**:
+  - Minimum Price
+  - Customer Email
+  - Phone Number
+- **Interactive Time-Series Chart** (Recharts)
+  - Daily sales & revenue trends
+  - Total, average, and peak day stats
+- **Smart Sales Table**
+  - 50 items per page
+  - Sorting by Date & Price
+  - Cursor-based pagination (before/after tokens)
+  - Responsive: Table on desktop → Cards on mobile
 
----
+### 🎨 UI/UX Highlights
+- Beautiful **Glassmorphism** dark theme
+- Smooth animations & hover effects
+- Skeleton loading states
+- Fully mobile-responsive (mobile-first approach)
+- Touch-friendly controls
 
-## 📂 Project Structure
-
-```
-sales-dashboard/
- ├── src/
- │   ├── components/
- │   │   ├── Header.jsx
- │   │   ├── Filters.jsx
- │   │   ├── StatsCards.jsx
- │   │   ├── SalesChart.jsx
- │   │   ├── SalesTable.jsx
- │   ├── pages/
- │   │   ├── Dashboard.jsx
- │   ├── assets/
- │   ├── App.jsx
- │   ├── main.jsx
- ├── public/
- ├── package.json
- ├── README.md
- └── index.html
-```
+### ⚡ Performance
+- API response caching
+- Optimized re-renders with React hooks
+- Fast data fetching with proper loading states
 
 ---
 
-## 📦 Installation
+## 📸 Screenshots
 
-Clone the repository:
+| Desktop View | 
+|--------------|
+| ![Desktop Dashboard](blob:https://www.instagram.com/4484931b-0f42-4490-b9e6-483decfaf500) | 
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm / yarn / pnpm
+
+### Installation
 
 ```bash
-git clone https://github.com/your-username/sales-dashboard.git
+git clone https://github.com/yourusername/sales-dashboard.git
 cd sales-dashboard
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
----
-
-## 🌐 Build for Production
-
-```bash
-npm run build
-```
-
-Preview production build:
-
-```bash
-npm run preview
-```
-
----
-
-## 📡 API Integration
-
-The app fetches data from your backend API (example):
-
-```
-GET /api/sales?startDate=&endDate=&minPrice=&email=&phone=
-```
-
-Make sure your backend returns:
-
-- totalSales  
-- totalRevenue  
-- avgOrderValue  
-- conversionRate  
-- chartData  
-- tableData  
-
----
-
-## 🖼 Screenshot
-
-(Add your dashboard screenshot here)
-
-```
-![Dashboard Screenshot](./screenshot.png)
-```
-
----
-
-## 📜 License
-
-This project is open-source and free to use.
+# or
+yarn install
+# or
+pnpm install
