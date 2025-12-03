@@ -21,30 +21,71 @@ const ensureToken = async () => {
   return token;
 };
 
-const getDateString = (offsetDays = 0) => {
-  const date = new Date();
-  date.setDate(date.getDate() + offsetDays);
-  return date.toISOString().split("T")[0];
-};
+export const getSalesData = async (pageToken = null, filters = {}) => {
+  try {
+    const token = await ensureToken();
 
-export const getSalesData = async () => {
-  const token = await ensureToken();
+    const getDateString = (offsetDays = 0) => {
+      const date = new Date();
+      date.setDate(date.getDate() + offsetDays);
+      return date.toISOString().split("T")[0];
+    };
+    const params = {
+      startDate: filters.startDate || getDateString(-30), 
+      endDate: filters.endDate || getDateString(1), 
+      limit: 50
+    };
 
-  const endDate = getDateString(0);
-  const startDate = "2025-01-01";
+    // Add filters
+    if (filters.minPrice) {
+      params.minPrice = parseFloat(filters.minPrice);
+    }
+    if (filters.customerEmail) {
+      params.email = filters.customerEmail;
+    }
+    if (filters.phoneNumber) {
+      params.phone = filters.phoneNumber;
+    }
 
-  console.log("Requesting sales from:", startDate, "to", endDate);
+    // Add pagination token
+    if (pageToken) {
+      params.page = pageToken;
+    }
 
-  const res = await axios.get(`${BASE_URL}/sales`, {
-    params: {
-      startDate,
-      endDate,
-    },
-    headers: {
-      "X-AUTOBIZZ-TOKEN": token,
-    },
-  });
+    console.log('🔍 API Request:', {
+      url: `${BASE_URL}/sales`,
+      params,
+      hasToken: !!token
+    });
 
-  console.log("Full Response:", res.data);
-  return res.data.results.Sales;
+    const res = await axios.get(`${BASE_URL}/sales`, {
+      params,
+      headers: {
+        "X-AUTOBIZZ-TOKEN": token,
+      },
+      timeout: 30000 
+    });
+
+    console.log('✅ API Response:', res.data);
+
+    const results = res.data.results || {};
+    
+    return {
+      sales: results.Sales || [],
+      beforeToken: results.beforeToken || null,
+      afterToken: results.afterToken || null,
+      total: results.totalCount || (results.Sales ? results.Sales.length : 0)
+    };
+
+  } catch (error) {
+    console.error('❌ API Error:', error);
+    
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpire");
+      throw new Error("Session expired. Please refresh the page.");
+    }
+    
+    throw error;
+  }
 };
