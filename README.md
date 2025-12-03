@@ -46,7 +46,9 @@ A modern, responsive **Sales Analytics Dashboard** built with **React**, **Tailw
 
 | Desktop View | 
 |--------------|
-| ![Desktop Dashboard](blob:https://www.instagram.com/4484931b-0f42-4490-b9e6-483decfaf500) | 
+<p align="center">
+  <img src="blob:https://www.instagram.com/4484931b-0f42-4490-b9e6-483decfaf500" alt="" />
+</p>
 
 ---
 
