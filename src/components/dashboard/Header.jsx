@@ -5,7 +5,7 @@ const Header = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const onRefresh = () => {
     setIsLoading(true);
-    // Simulate a data fetch
+    window.location.reload();
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -30,10 +30,10 @@ const Header = () => {
         variant="outline"
         onClick={onRefresh}
         disabled={isLoading}
-        class="relative rounded-xl px-8 py-3 overflow-hidden group bg-[#0da2e7] hover:bg-gradient-to-r hover:from-[#09a0e6] hover:to-[#0da2e7] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#0da2e7] transition-all ease-out duration-300"
+        className="relative rounded-xl px-8 py-3 overflow-hidden group bg-[#0da2e7] hover:bg-gradient-to-r hover:from-[#09a0e6] hover:to-[#0da2e7] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#0da2e7] transition-all ease-out duration-300"
       >
-        <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-        <span class="relative flex items-center gap-2">
+        <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+        <span className="relative flex items-center gap-2">
           <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
           <p>Refresh</p>
         </span>
